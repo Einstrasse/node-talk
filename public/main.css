@@ -83,6 +83,7 @@ html, body {
 }
 .message {
 	margin: 1.15em .1em 1em .8em;
+	font-family: Arial;
 }
 .text-box {
 	margin: 0 3.4em;

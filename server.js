@@ -8,7 +8,9 @@ app.use('/', express.static( __dirname + '/public'));
 
 io.on('connection', function(socket) {
 	console.log('a user connected');
+	io.emit('sys_message', '유저 한명이 새로 접속했습니다.');
 	socket.on('disconnect', function() {
+		io.emit('sys_message', '유저 한명이 퇴장했습니다.');
 		console.log('user disconnected');
 	});
 	socket.on('message', function(msg){

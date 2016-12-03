@@ -12,11 +12,13 @@ function randomUsername() {
 }
 
 function send() {
+	var input = $('#content');
 	socket.emit('message', {
 		'username' : $('#username').val(),
-		'content' : $('#content').val()
+		'content' : input.val()
 	});
-	$('#content').focus();
+	input.focus();
+	input.val('');
 }
 
 function createIdenticonAvatar( username ) {
@@ -56,10 +58,17 @@ function showMessage(message) {
 	last_sender = message.username;
 }
 
+function showSysMsg (msg) {
+	$('#chat').append(
+		$('<div class="message">').text(msg)
+	);
+}
+
 $(function () {
 	$("form").submit( function (e) { e.preventDefault(); });
 	$('#send-btn').click(function () { send(); });
 	socket.on('message', function (message) { showMessage(message); });
+	socket.on('sys_message', function (msg) { showSysMsg(msg); });
 	$("#username").val( randomUsername() );
 	$('#content').focus();
 });
