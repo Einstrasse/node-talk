@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0" />
-<title>node-talk</title>
+<title>채팅</title>
 <link rel="stylesheet" href="main.css">
 <script src="//code.jquery.com/jquery-1.11.1.js"></script>
 <script src='//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core-min.js'></script>
@@ -13,7 +13,10 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="app.js"></script>
 </head>
-<body>
+<body onLoad="addHandle(document.getElementById('toolbar'), window);">
+	<div id="toolbar">
+		
+	</div>
 	<div id="container">
 		<div id="header">
 			이름 <input id="username"/>
@@ -30,5 +33,7 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	</script>
   </body>
 </html>
