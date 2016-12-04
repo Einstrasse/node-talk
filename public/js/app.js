@@ -13,6 +13,9 @@ function randomUsername() {
 
 function send() {
 	var input = $('#content');
+	if (!input.val()) {
+		return;
+	}
 	socket.emit('message', {
 		'username' : $('#username').val(),
 		'content' : input.val()
@@ -69,6 +72,10 @@ $(function () {
 	$('#send-btn').click(function () { send(); });
 	socket.on('message', function (message) { showMessage(message); });
 	socket.on('sys_message', function (msg) { showSysMsg(msg); });
-	$("#username").val( randomUsername() );
+	if (typeof window.parent.usr_nm !== 'undefined') {
+		$("#username").val( window.parent.usr_nm );	
+	} else {
+		$("#username").val( randomUsername() );
+	}
 	$('#content').focus();
 });
