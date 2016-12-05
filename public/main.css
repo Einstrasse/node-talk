@@ -80,6 +80,8 @@ html, body {
 #chat span {
 	padding: .4em .5em;
 	border-radius: .2em;
+	word-break: break-all;
+	display: inline-block;
 }
 .message {
 	margin: 1.15em .1em 1em .8em;
