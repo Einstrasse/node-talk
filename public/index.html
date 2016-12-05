@@ -16,10 +16,26 @@
 <script>
 	document.domain = 'iptime.org';
 </script>
+<style>
+#closer {
+float: right;
+display:inline-block;
+cursor:pointer;
+height: 35px;
+text-align: center;
+font-size: 29px;
+width: 15%;
+}
+</style>
 </head>
 <body onLoad="addHandle(document.getElementById('toolbar'), window);">
 	<div id="container">
-	<div id="toolbar"></div>
+	<div>
+		<div id="toolbar" style="display:inline-block;width: 85%">
+
+		</div>
+		<span id="closer">X</span>
+	</div>
 		<div id="header">
 			이름 <input id="username"/>
 		</div>
@@ -36,6 +52,11 @@
 		</div>
 	</div>
 	<script>
+		$('#closer').click(function() {
+			if (window.parent && window.parent.chat && window.parent.chat.close) {
+				window.parent.chat.close();
+			}
+		});
 	</script>
   </body>
 </html>
