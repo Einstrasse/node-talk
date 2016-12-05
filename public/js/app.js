@@ -62,9 +62,16 @@ function showMessage(message) {
 }
 
 function showSysMsg (msg) {
+	last_sender = 'system_notice';
 	$('#chat').append(
-		$('<div class="message">').text(msg)
+		$('<div class="message sys-info">')
+			.append( $('<div class="text-box">')
+				.append ( $('<div class="content-box">')
+					.append($('<span>').text(msg))
+			)
+		)
 	);
+	
 }
 
 $(function () {

@@ -121,6 +121,18 @@ html, body {
 	background: #fef01b;
 }
 
+.sys-info span {
+	background: #ddd;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.sys-info .text-box {
+	margin: 0;
+}
+
 .others span {
 	background: #fff;
 }
