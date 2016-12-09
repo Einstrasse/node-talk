@@ -2,9 +2,18 @@ var port = process.env.PORT || 3000;
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
 
+var fs = require('fs');
+//var io = require('socket.io')(http);
 var num_user = 0;
+
+var options = {
+	key: fs.readFileSync('/etc/letsencrypt/live/freemed.iptime.org/privkey.pem'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/freemed.iptime.org/cert.pem')
+}
+
+var https = require('https').Server(options, app);
+var io = require('socket.io')(https);
 
 app.use('/', express.static( __dirname + '/public'));
 
@@ -22,6 +31,6 @@ io.on('connection', function(socket) {
 	});
 });
 
-http.listen(port, function(){
+https.listen(port, function(){
   console.log('Freemed chatting server is listening on port number:' + port);
 });
