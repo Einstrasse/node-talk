@@ -1,7 +1,7 @@
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 443;
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
+//var http = require('http').Server(app);
 
 var fs = require('fs');
 //var io = require('socket.io')(http);
@@ -15,7 +15,19 @@ var options = {
 var https = require('https').Server(options, app);
 var io = require('socket.io')(https);
 
-app.use('/', express.static( __dirname + '/public'));
+app.set('views', __dirname + '/views');
+app.use(express.static('public'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+app.get('/', function(req, res) {
+console.log('root path access');
+	res.redirect('https://freemed.iptime.org:8181/freeMed/jsp');
+});
+
+app.use('/chat', function(req, res) {
+	res.render('index');
+});
 
 io.on('connection', function(socket) {
 	console.log('a user connected');
