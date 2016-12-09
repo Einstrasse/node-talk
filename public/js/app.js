@@ -62,7 +62,7 @@ function showMessage(message) {
 }
 
 function showSysMsg (msg) {
-	last_sender = 'system_notice';
+
 	$('#chat').append(
 		$('<div class="message sys-info">')
 			.append( $('<div class="text-box">')
@@ -71,7 +71,8 @@ function showSysMsg (msg) {
 			)
 		)
 	);
-	
+	$("#chat")[0].scrollTop = $("#chat")[0].scrollHeight;
+	last_sender = 'system_notice';	
 }
 
 $(function () {
