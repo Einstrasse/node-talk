@@ -9,7 +9,8 @@ var num_user = 0;
 
 var options = {
 	key: fs.readFileSync('/etc/letsencrypt/live/freemed.iptime.org/privkey.pem'),
-	cert: fs.readFileSync('/etc/letsencrypt/live/freemed.iptime.org/cert.pem')
+	cert: fs.readFileSync('/etc/letsencrypt/live/freemed.iptime.org/cert.pem'),
+	ca: fs.readFileSync('/etc/letsencrypt/live/freemed.iptime.org/chain.pem')
 }
 
 var https = require('https').Server(options, app);
